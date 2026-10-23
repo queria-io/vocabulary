@@ -1,0 +1,7 @@
+name,title,title_en,description,description_en,aliases
+prefecture,都道府県,Prefecture,都道府県コード（2 桁）や都道府県名で都道府県を識別する列,Identifies a prefecture by its 2-digit code or name,都道府県コード;都道府県名;prefecture code
+city,市区町村,Municipality,全国地方公共団体コード（5 桁または検査数字付きの 6 桁）や市区町村名で市区町村を識別する列,"Identifies a municipality by its local government code (5 digits, or 6 with the check digit) or name",市区町村コード;全国地方公共団体コード;団体コード;自治体;市町村;municipality
+small_area,町丁・字等,Small area (chō-chōme / aza),国勢調査の小地域コード（KEY_CODE）や町丁目名で町丁・字を識別する列,Identifies a town block (chō-chōme or aza) by the census small area code (KEY_CODE) or name,町丁目;町丁字;町字;小地域;町名;small area
+mesh,地域メッシュ,Grid square (mesh),標準地域メッシュのコードで区画を識別する列。次数（1 次〜細分メッシュ）は説明に書く,Identifies a standard grid square by its mesh code. State the level in the column description,メッシュ;メッシュコード;grid
+corporate_number,法人番号,Corporate number,国税庁が指定する 13 桁の法人番号で法人を識別する列,Identifies a corporation by the 13-digit corporate number assigned by the National Tax Agency,法人;corporation
+postal_code,郵便番号,Postal code,7 桁の郵便番号で区域を識別する列,Identifies an area by its 7-digit postal code,zipcode;zip code
