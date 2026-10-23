@@ -1,0 +1,18 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      # GIF と schema.org の語は公開データセット（gif・schemaorg）から引く。トークンはレートリミットを上げるためだけ
+      - run: uv run scripts/check.py
+        env:
+          QUERIA_TOKEN: ${{ secrets.QUERIA_TOKEN }}
