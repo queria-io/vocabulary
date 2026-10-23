@@ -47,7 +47,7 @@ In a Queria dataset, a column in `*.table.yml` looks like this:
   semantic: { role: entity, name: postal_code }
 ```
 
-The column name follows `name` in `data_elements.csv`, and `semantic.name` follows `name` in `entities.csv`.
+The column name follows `name` in `data_elements.csv` for Japanese public data, and the `schema_org` term in snake_case for general data (`name` when it is empty). `semantic.name` follows `name` in `entities.csv`. The full conventions are in [Dataset conventions](https://docs.queria.io/en/publish/conventions) on docs.queria.io.
 
 ## Sources
 

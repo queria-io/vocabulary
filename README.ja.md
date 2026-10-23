@@ -47,7 +47,7 @@ Queria のデータセットでは、`*.table.yml` の列に次のように書�
   semantic: { role: entity, name: postal_code }
 ```
 
-列名は `data_elements.csv` の `name` に、`semantic.name` は `entities.csv` の `name` に揃える。
+列名は、日本の公的データなら `data_elements.csv` の `name` に、一般のデータなら `schema_org` を snake_case にしたもの（空なら `name`）に揃える。`semantic.name` は `entities.csv` の `name` に揃える。詳しい規約は [docs.queria.io のデータセットの規約](https://docs.queria.io/publish/conventions)にある。
 
 ## 語彙の出典
 
