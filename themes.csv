@@ -1,0 +1,18 @@
+code,name,title,title_en,eu_themes,examples,examples_en
+01,land_climate,国土・気象,Land and climate,ENVI,面積・地形・境界・気温・降水量・災害の危険区域,"Area, terrain, boundaries, temperature, rainfall, hazard zones"
+02,population,人口・世帯,Population and households,SOCI,人口・世帯数・年齢別人口・出生と死亡・転入と転出,"Population, households, age groups, births and deaths, migration"
+03,labour,労働・賃金,Labour and wages,ECON,就業者・失業率・賃金・労働時間,"Employment, unemployment, wages, working hours"
+04,agriculture,農林水産業,"Agriculture, forestry and fisheries",AGRI,農業経営体・作付面積・収穫量・漁獲量・森林,"Farms, planted area, harvests, catches, forests"
+05,mining_manufacturing,鉱工業,Mining and manufacturing,ECON,製造品出荷額・工場・鉱業,"Manufacturing shipments, factories, mining"
+06,commerce_services,商業・サービス業,Commerce and services,ECON,小売・卸売・飲食店・店舗・サービス業の事業所,"Retail, wholesale, restaurants, shops, service establishments"
+07,economy,企業・家計・経済,"Businesses, households and the economy",ECON,事業所・企業・法人・家計・物価・県民経済計算,"Establishments, companies, corporations, household budgets, prices, regional accounts"
+08,housing_land,住宅・土地・建設,"Housing, land and construction",REGI,住宅・地価・土地利用・建築着工・都市計画,"Housing, land prices, land use, building starts, city planning"
+09,energy_water,エネルギー・水,Energy and water,ENER,電力・ガス・上下水道,"Electricity, gas, water supply and sewerage"
+10,transport_tourism,運輸・観光,Transport and tourism,TRAN,道路・交通量・鉄道・駅・バス・観光客,"Roads, traffic, railways, stations, buses, tourists"
+11,ict_science,情報通信・科学技術,"Information, communications, science and technology",TECH,通信・インターネット利用・研究開発,"Telecommunications, internet use, research and development"
+12,education_culture,教育・文化・スポーツ・生活,"Education, culture, sport and daily life",EDUC,学校・児童生徒・図書館・文化財・スポーツ施設・生活時間,"Schools, pupils, libraries, cultural properties, sports facilities, time use"
+13,government_finance,行財政,Government and public finance,GOVE,地方財政・予算・決算・公務員・選挙・公共施設,"Local finance, budgets, settlements, public servants, elections, public facilities"
+14,justice_safety_environment,司法・安全・環境,"Justice, safety and environment",JUST;ENVI,犯罪・交通事故・消防・防災・ごみ・環境,"Crime, traffic accidents, fire services, disaster prevention, waste, environment"
+15,social_security_health,社会保障・衛生,Social security and health,HEAL;SOCI,医療機関・介護・福祉・保育・健康,"Medical institutions, long-term care, welfare, childcare, health"
+16,international,国際,International,INTR,貿易・外国人・国際比較,"Trade, foreign residents, international comparisons"
+99,other,その他,Other,,ほかの分野に入らないもの,Anything not in another theme

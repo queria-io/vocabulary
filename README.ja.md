@@ -12,6 +12,8 @@
   識別する実体が同じ列どうしは、名前やコードの形が違っても結合できる
 - `data_elements.csv`: データ項目の語彙。列が「何を表すか」と、その標準の名前。
   ISO/IEC 11179 のデータ項目（data element）にあたる
+- `themes.csv`: テーマの語彙。表が「どの分野のデータか」。政府統計の総合窓口（e-Stat）の統計分野の大分類に揃え、
+  EU の Data Theme（DCAT-AP の `dcat:theme`）との対応を持つ
 
 例えば `prefecture_code`（都道府県コード）と `prefecture`（都道府県名）は別のデータ項目だが、
 どちらも実体は `prefecture` を識別する。
@@ -49,11 +51,27 @@ Queria のデータセットでは、`*.table.yml` の列に次のように書�
 
 列名は、日本の公的データなら `data_elements.csv` の `name` に、一般のデータなら `schema_org` を snake_case にしたもの（空なら `name`）に揃える。`semantic.name` は `entities.csv` の `name` に揃える。詳しい規約は [docs.queria.io のデータセットの規約](https://docs.queria.io/publish/conventions)にある。
 
+表のテーマは `dataset.yml`（データセット全体）か `*.table.yml`（表ごと）に `themes` で書く。値は `themes.csv` の `name` で、いくつ並べてもよい。表に無ければデータセットの値を受け継ぐ。
+
+```yaml
+themes: [population]
+```
+
+## themes.csv の列
+
+- `code`: e-Stat の統計分野（大分類）の 2 桁のコード
+- `name`: `themes` に書く名前
+- `title`, `title_en`: 見出し。`title` は e-Stat の分野名のまま
+- `eu_themes`: 対応する EU の Data Theme の語（`;` 区切り）。海外のデータや DCAT への書き出しで使う
+- `examples`, `examples_en`: そのテーマに入るデータの例。どのテーマか迷ったときの目安
+
 ## 語彙の出典
 
 - schema.org: [schema.org](https://schema.org/)（CC BY-SA 3.0）
 - GIF: [digital-go-jp/GIF](https://github.com/digital-go-jp/GIF)（デジタル庁）
 - IMI: [共通語彙基盤 コア語彙 2.4.2](https://imi.go.jp/core/core242/)（CC0 1.0）
+- 統計分野: [政府統計の総合窓口 API の統計分野](https://www.e-stat.go.jp/api/api-info/statsfield)（総務省統計局）
+- EU Data Theme: [Data theme](http://publications.europa.eu/resource/authority/data-theme)（EU Publications Office）
 
 これらの語彙は Queria に公開データセット（`schemaorg`・`gif`・`imi`）として載っていて、SQL で引ける。
 
@@ -64,7 +82,7 @@ uv run scripts/check.py
 ```
 
 実体名の重複、データ項目の `entity` が `entities.csv` にあること、GIF・schema.org の語が実在すること、
-`name` がそれらの snake_case であること、`aliases` が重複しないことを確かめる。PR ごとに CI が回す。
+`name` がそれらの snake_case であること、`aliases` が重複しないこと、テーマの code と name が重複せず EU の Data Theme の語が実在することを確かめる。PR ごとに CI が回す。
 
 ## ライセンス
 
