@@ -14,6 +14,7 @@ GIF と schema.org の語は Queria の公開データセット（gif・schemaor
 - schema_org は schemaorg.vocab.property にある語であること
 - 語彙の語がある行の name は、GIF か schema.org の語を snake_case にしたものであること
 - データ項目の name と aliases はそれぞれ重複せず、互いに重ならないこと
+- themes.csv の code と name は重複せず、eu_themes は EU の Data Theme の語であること
 """
 
 import csv
@@ -59,6 +60,27 @@ def problems(entities: list[dict], elements: list[dict], gif: set[tuple[str, str
     ]
 
 
+#: EU の Data Theme（DCAT-AP の dcat:theme）の語
+#: http://publications.europa.eu/resource/authority/data-theme
+EU_THEMES = {
+    "AGRI", "ECON", "EDUC", "ENER", "ENVI", "GOVE", "HEAL",
+    "INTR", "JUST", "OP_DATPRO", "REGI", "SOCI", "TECH", "TRAN",
+}
+
+
+def theme_problems(themes: list[dict]) -> list[str]:
+    return [
+        *(f"{c}: theme の code が重複している" for c in duplicates([t["code"] for t in themes])),
+        *(f"{n}: theme の name が重複している" for n in duplicates([t["name"] for t in themes])),
+        *(
+            f"{t['name']}: {e} は EU の Data Theme に無い"
+            for t in themes
+            for e in t["eu_themes"].split(";")
+            if e and e not in EU_THEMES
+        ),
+    ]
+
+
 def vocabularies() -> tuple[set[tuple[str, str]], set[str]]:
     import queria
 
@@ -69,6 +91,9 @@ def vocabularies() -> tuple[set[tuple[str, str]], set[str]]:
 
 
 if __name__ == "__main__":
-    found = problems(read("entities.csv"), read("data_elements.csv"), *vocabularies())
+    found = [
+        *problems(read("entities.csv"), read("data_elements.csv"), *vocabularies()),
+        *theme_problems(read("themes.csv")),
+    ]
     print("\n".join(found) or "ok", file=sys.stderr)
     sys.exit(1 if found else 0)
