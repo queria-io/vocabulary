@@ -12,7 +12,5 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: astral-sh/setup-uv@v7
-      # GIF と schema.org の語は公開データセット（gif・schemaorg）から引く。トークンはレートリミットを上げるためだけ
+      # GIF と schema.org の語は公開データセット（gif・schemaorg）から引く。トークンは渡さない
       - run: uv run scripts/check.py
-        env:
-          QUERIA_TOKEN: ${{ secrets.QUERIA_TOKEN }}
